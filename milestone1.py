@@ -20,7 +20,7 @@ def rna2codon(rna):
     count=0
     for i in range(0,len(rna),3):
         count+=3
-        if count>=len(rna):
+        if count>len(rna):
             break
         triplet = str(rna[i] + rna[i+1] + rna[i+2])
         print(triplet)
