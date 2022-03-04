@@ -1,9 +1,12 @@
-#Upo 1
-def s(dna):
-    d = dict()
-    for i in dna:
-        if i in d.keys():
-            d[i] += 1
+def locate_substring(dna_snippet, dna):
+    start = 0
+    li=[]
+    while True: 
+        if dna.find(dna_snippet, start)==-1:
+            break
         else:
-            d[i] = 1
-     print(d)
+            start=dna.find(dna_snippet, start)
+            li.append(start)
+            start += 1 
+    return li
+print(locate_substring("ATAT","GATATATGCATATACTT"))
