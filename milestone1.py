@@ -22,4 +22,3 @@ def rna2codon(rna):
             result = result + genetic_code[triplet]
     return result
 
-print(rna2codon("AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA"))
