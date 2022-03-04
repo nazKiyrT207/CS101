@@ -17,9 +17,14 @@ def rna2codon(rna):
           "UGG" : "W", "CGG": "R", "AGG": "R", "GGG": "G"}
     result = ""
     print(rna)
+    count=0
     for i in range(0,len(rna),3):
+        count+=3
+        if count>=len(rna):
+            break
         triplet = str(rna[i] + rna[i+1] + rna[i+2])
         print(triplet)
         if triplet in genetic_code:
             result = result + genetic_code[triplet]
     return result
+print(rna2codon('AUUGUCA'))
