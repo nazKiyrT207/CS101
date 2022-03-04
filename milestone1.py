@@ -16,6 +16,7 @@ def rna2codon(rna):
        "UGA" : "", "CGA": "R", "AGA": "R", "GGA": "G",
           "UGG" : "W", "CGG": "R", "AGG": "R", "GGG": "G"}
     result = ""
+    print(rna)
     for i in range(0,len(rna),3):
         triplet = str(rna[i] + rna[i+1] + rna[i+2])
         print(triplet)
