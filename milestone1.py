@@ -16,7 +16,7 @@ def dna2rna(dna):
 			rna += "U"
 		else:
 			rna += char
-    return rna
+    	return rna
 
 #reverse_complement(dna)
 def reverse_complement(dna):
