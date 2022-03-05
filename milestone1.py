@@ -142,10 +142,9 @@ def source_rna(protein):
 
 #12
 def splice_rna(dna, intron_list):
-    proteinString = ''
     for i in intron_list:
-        exon = exon.replace(i, '')
-    rna = dna2rna(exon)
+        dna = dna.replace(i, '')
+    rna = dna2rna(dna)
     proteinString = rna2codon(rna)
     return proteinString
 
