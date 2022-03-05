@@ -83,7 +83,7 @@ def locate_substring(dna_snippet, dna):
 
 #Rna2codon(rna)
 def rna2codon(rna):
-   genetic_code = {"UUU" : "F", "CUU": "L", "AUU": "I", "GUU": "V",
+    genetic_code = {"UUU" : "F", "CUU": "L", "AUU": "I", "GUU": "V",
           "UUC" : "F", "CUC": "L", "AUC": "I", "GUC": "V",
           "UUA" : "L", "CUA": "L", "AUA": "I", "GUA": "V",
           "UUG" : "L", "CUG": "L", "AUG": "M", "GUG": "V",
