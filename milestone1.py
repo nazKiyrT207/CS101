@@ -134,7 +134,7 @@ def count_dom_phenotype(genotypes):
         		continue
 	return output
 
-print(count_dom_phenotype([1, 0, 0, 1, 0, 1]))
+
 
 
 
@@ -150,7 +150,7 @@ def source_rna(protein):
 	return count%1000000
 
 #print result for sequence "MA"
-print(source_rna("MA"))
+
 
 #12
 def splice_rna(dna, intron_list):
@@ -160,6 +160,5 @@ def splice_rna(dna, intron_list):
     rna = dna2rna(dna)
     proteinString = rna2codon(rna)
     return proteinString
-print(splice_rna("ATGGTCTACATAGCTGACAAACAGCACGTAGCAATCGGTCGAATCTCGAGAGGCATATGGTCACATGATCGGTCGAGCGTGTTTCAAAGTTTGCGCCTAG",["ATCGGTCGAA", "ATCGGTCGAGCGTGT"]))
 
 
