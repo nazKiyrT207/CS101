@@ -135,9 +135,8 @@ def source_rna(protein):
         	'N' : 2, 'K' : 2, 'V' : 4, 'A' : 4, 'D' : 2, 'E'  :2, 'G' : 4}
     for a in protein:
         count = count * Dict[a]
-	count = count * 3
+        count = count * 3
     return count%1000000
-
 #print result for sequence "MA"
 
 
