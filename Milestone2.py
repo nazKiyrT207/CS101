@@ -49,8 +49,6 @@ def perfect_match(rna):
 		return 0
 	else:
 		return cg * au
-  
-  import math
 
 def random_genome(dna, gc):
 	cg, at = 0, 0
