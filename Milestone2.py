@@ -9,6 +9,7 @@ def find_splice(dna_motif, dna):
     li.append(dna.index(i, start))
     start = dna.index(i, start)+1
   return li
+print(find_splice('GTA', "ACGACATCACGTGACG"))
 
 def shared_motif(dna_list):
   firstDna = dna_list[0]
@@ -26,6 +27,8 @@ def shared_motif(dna_list):
         if len(substring) > len(lcs):
           lcs = substring
   return lcs
+print(shared_motif(["GATTACA", "TAGACCA", "ATACA"]))
+print(shared_motif(["ATATACA", "ATACAGA", "GGTATACA"]))
 
 def perfect_match(rna):
 	d = {}
@@ -49,7 +52,8 @@ def perfect_match(rna):
 		return 0
 	else:
 		return cg * au
-   
+import math
+
 def random_genome(dna, gc):
 	cg, at = 0, 0
 	for i in dna:
@@ -67,13 +71,45 @@ def random_genome(dna, gc):
 dna = "ACGATACAA"
 gc_content = [0.129, 0.287, 0.423, 0.476, 0.641, 0.742, 0.783]
 
-def rev_palindrome(dna):
-   result= []
-   for i in range(len(dna)-4):
-     z = min(len(dna),i+12)
-     for j in range(i+3,z):
-           word = dna[i:j+1]
-           if (reverse_complement(dna[i:j+1]) == word):
-               result.append((i,j-i+1))
-   return result
+
+print(random_genome(dna, gc_content))
+
+def assemble_genome(words):
+    def recursive_find(i, select):
+        if select == 2**n - 1:
+            return words[i]
+        ans = "".join(words)
+        for j in range(n):
+            if select & 2**j == 0:
+                conn = congruency[i][j]
+                curr_word = recursive_find(j, (select | 2**j))
+                if len(words[i] + curr_word[conn:]) < len(ans):
+                    ans = words[i] + curr_word[conn:]
+        return ans
+    n = len(words)
+    congruency = [[0 for x in range(n)] for x in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                size = len(words[i])
+                for k in range(1, size):
+                    if words[j].startswith(words[i][k:]):
+                        congruency[i][j] = size - k
+                        break
+    shortest_word = "".join(words)
+    for i in range(n):
+        l = recursive_find(i, 2**i)
+        if len(l) <= len(shortest_word):
+            shortest_word = l
+    return shortest_word
    
+def rev_palindrome(dna):
+    ret = []
+    for i in range(len(dna)):
+        for j in range(i, len(dna)):
+            if (j-i) <= 2 or (j-i) >= 10:
+                continue
+            elif reverse_complement(dna[i:j+1]) == dna[i:j+1]:
+                ret.append((i,j-i+1))
+    return ret
+  
