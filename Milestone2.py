@@ -113,3 +113,10 @@ def rev_palindrome(dna):
                 ret.append((i,j-i+1))
     return ret
   
+def reverse_complement(dna):
+    dna = dna[::-1]
+    revcomdna = ""
+    complements = {"A": "T", "T": "A", "C": "G", "G": "C"}
+    for char in (dna):
+        revcomdna += complements[char]
+    return revcomdna
