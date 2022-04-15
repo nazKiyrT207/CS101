@@ -120,3 +120,19 @@ def reverse_complement(dna):
     for char in (dna):
         revcomdna += complements[char]
     return revcomdna
+
+def get_edges(dna_dict):
+    m1=[]
+    for x,e1 in dna_dict.items():
+        for c,e2 in dna_dict.items():
+          if x!=c:
+            if e1[-3:]==e2[:3]:
+              m1.append((c,x))
+    return m1
+
+eqn = get_edges({"Rosalind_0498":"AAATAAA",
+                 "Rosalind_2391":"AAATTTT",
+                 "Rosalind_2323":"TTTTCCC",
+                 "Rosalind_0442":"AAATCCC",
+                 "Rosalind_5013":"GGGTGGG"})
+            
