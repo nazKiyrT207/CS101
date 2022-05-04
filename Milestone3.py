@@ -48,6 +48,3 @@ def assemble_genome2(data):
             
     print("Finished. Final length is:", lengthTotal, data)
     return find_dna
-
-M3.py
-M3.py 표시 중입니다.
