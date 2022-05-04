@@ -3,8 +3,8 @@ import random
 
 def load_file(fname):
     try:
-        with open(fname, 'r', encoding='utf-8') as f:
-            data = f.read().splitlines()
+        with open(fname, 'r', encoding='utf-8') as filename:
+            data = fielname.read().splitlines()
             return data
 
     except OSError:
@@ -12,42 +12,42 @@ def load_file(fname):
 
 
 def assemble_genome2(data):
-    # assume an eight-character overlap between strings
-    total_len = len(data)
-    index = random.randint(0, total_len-1)
-    superDNA = data.pop(index)
-    total_len -= 1
-    while total_len > 0:
-        print(total_len)
-        BOOL = True
-        for l in range(8, 0, -1): # 8,7,6,5,4,3,2,1 tot8 why 8-1? eight-character overlap between strings
-            for i in range(total_len):
-                if superDNA[0:l] == data[i][-l:]:
-                    superDNA = data.pop(i) + superDNA[l:]
-                    #print(superDNA)
-                    total_len -= 1
-                    BOOL = False
+
+    lengthTotal = len(data)
+    idx = random.randint(0, lengthTotal - 1)
+
+    find_dna = data.pop(idx)
+    lengthTotal = lengthTotal - 1
+
+    while lengthTotal > 0:
+        print(lengthTotal)
+        isValid = True
+        for i in range(8, 0, -1): 
+            for j in range(lengthTotal):
+                if find_dna[0 : i] == data[j][-i:]:
+                    find_dna = data.pop(j) + find_dna[i:]
+                    lengthTotal = lengthTotal - 1
+                    isValid = False
                     break
-                elif superDNA[-l:] == data[i][0:l]:
-                    superDNA = superDNA + data.pop(i)[l:]
-                    #print(superDNA)
-                    total_len -= 1
-                    BOOL = False
+
+                elif find_dna[-i:] == data[j][0:i]:
+                    find_dna = find_dna + data.pop(j)[i:]
+                    lengthTotal = lengthTotal - 1
+                    isValid = False
                     break
-            if not BOOL:
+            if not isValid:
                 break
-        if BOOL:
+
+        if isValid:
             print("*********************")
-            print(superDNA)
-            d = data.pop()
-            print(d)
-            superDNA += d
-            total_len -= 1
-    print("Finish, with len:", total_len, data)
-    return superDNA
+            print(find_dna)
+            data1 = data.pop()
+            print(data1)
+            find_dna = find_dna + data1
+            lengthTotal = lengthTotal - 1
+            
+    print("Finished. Final length is:", lengthTotal, data)
+    return find_dna
 
-
-
-#df = load_file("test5000.txt")
-#res = assemble_genome2_v3(df)
-#print(res)
+M3.py
+M3.py 표시 중입니다.
